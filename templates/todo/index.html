@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>TODOリスト管理ツール</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'todo/css/style.css' %}">
+</head>
+<body>
+    <header class="bg-primary">
+        <a href="{% url 'todo:index' %}"><h1 class="text-center text-white">TODOリスト管理ツール</h1></a>
+    </header>
+
+    <main class="container">
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.deadline }}
+            {{ form.content }}
+            <input class="form-control my-2" type="submit" value="送信">
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>期限</td>
+                    <td>やること</td>
+                    <td>削除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!--ここがやることリスト、ループさせる-->
+                {% for todo_data in data %}
+                <tr>
+                    <td class="text-center">{{ todo_data.deadline }}</td>
+                    <td>{{ todo_data.content|linebreaksbr }}</td>
+                    <td class="trash">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="todo_delete" value="{{ todo_data.id }}">
+                            <input id="todo_delete_{{ todo_data.id }}" type="submit" style="display:none;">
+                            <label for="todo_delete_{{ todo_data.id }}"><i class="fas fa-trash-alt"></i></label>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+
+
+</body>
+</html>
+

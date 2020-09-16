@@ -1,0 +1,46 @@
+html {
+  font-size: 18px;
+}
+@media (max-width:  768px)  {
+  html {
+    font-size: 15px;
+  }
+}
+
+
+table {
+    width:100%;
+    border:solid 0.2rem black;
+}
+
+thead td {
+    text-align:center;
+}
+td {
+    padding:0.25rem;
+    border:solid 0.2rem dimgray;
+}
+
+
+
+
+
+.trash {
+    text-align:center;
+}
+.trash label {
+    position:relative;
+
+}
+.trash i { 
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    font-weight:bold;
+    font-size:1.25rem;
+    color:dimgray;
+    cursor:pointer;
+}
+
