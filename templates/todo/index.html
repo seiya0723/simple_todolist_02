@@ -1,5 +1,7 @@
 {% load static %}
 
+<!-- ↑静的ファイル配信先のURLを読み込んでいる。教科書P77-->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,16 +13,22 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'todo/css/style.css' %}">
+    <!-- ↑静的ファイルの読み込み。パスはstatic以下を記述 教科書P77-->
 </head>
 <body>
     <header class="bg-primary">
+        <!-- ↓URLの逆引き処理。教科書P78-->
         <a href="{% url 'todo:index' %}"><h1 class="text-center text-white">TODOリスト管理ツール</h1></a>
     </header>
 
+    <!--波括弧を使用して変数もしくは処理を実行する、これがDTL(Django Template Language)。教科書P69
+        
+        なぜ波括弧なのか？→通常のPythonで使用する記号ではHTMLと競合するから -->
     <main class="container">
 
         <form action="" method="post">
             {% csrf_token %}
+            <!-- formとそのまま書いても良いが、自動的にテーブルタグで囲まれるので注意 -->
             {{ form.deadline }}
             {{ form.content }}
             <input class="form-control my-2" type="submit" value="送信">
@@ -35,10 +43,11 @@
                 </tr>
             </thead>
             <tbody>
-                <!--ここがやることリスト、ループさせる-->
+                <!--ここがやることリスト、ループさせる 教科書P75-->
                 {% for todo_data in data %}
                 <tr>
                     <td class="text-center">{{ todo_data.deadline }}</td>
+                    <!--↓フィルタのlinebreaksbrは改行をBRタグとして処理をする。改行込みの文字列を表示する際に使う。教科書P71-->
                     <td>{{ todo_data.content|linebreaksbr }}</td>
                     <td class="trash">
                         <form action="" method="post">

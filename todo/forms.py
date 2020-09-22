@@ -4,7 +4,7 @@ from django import forms
 from django.forms import ModelForm,Textarea,DateTimeInput
 
 
-#ModelFormを継承し、Metaクラスに利用するモデルクラス名、フィールド、ウィジェット等を記述
+#ModelFormを継承し、Metaクラスに利用するモデルクラス名、フィールド、ウィジェット等を記述。モデルを継承したフォームは教科書P91を参照。
 class TodolistForm(ModelForm):
     class Meta:
         model   = Todolist
@@ -17,4 +17,4 @@ class TodolistForm(ModelForm):
 #モデルを継承せずにフォームを1から作る場合は、Formを継承
 #【注意】モデルで定義したidは編集不可(editable=False)の要素のため、継承することができない
 class TododeleteForm(forms.Form):
-    id  = forms.UUIDField()
+    todo_delete  = forms.UUIDField()

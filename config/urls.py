@@ -17,6 +17,7 @@ from django.contrib import admin
 
 from django.urls import path,include
 
+#   path(URL,処理(もしくは参照する他のurls.py),逆引き用の名前(テンプレートのurlで使う))
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("todo.urls"),name="todo"),

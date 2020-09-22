@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import Todolist
-from .forms import TodolistForm
 
+
+#modelsから、管理サイトを作る。教科書P140のリスト13.3を参照
 class TodolistModelAdmin(admin.ModelAdmin):
     #一覧表示時に表示させるカラム
     list_display    = ["id","deadline","content"]
@@ -15,7 +16,7 @@ class TodolistModelAdmin(admin.ModelAdmin):
     #【詳細】https://stackoverflow.com/questions/56035838/what-does-the-error-enter-a-list-of-values-mean-using-jquery-datetimepicker
 
 
-#管理画面でTODOリストのテーブルを操作できるようにする
+#管理画面でTODOリストのテーブルを操作できるようにする。教科書P140
 admin.site.register(Todolist,TodolistModelAdmin)
 
 
