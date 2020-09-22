@@ -32,7 +32,6 @@ class TodoView(View):
 
         #TODOリストの作成
         if "deadline" in request.POST and "content" in request.POST:
-            print(request.POST)
 
             #教科書P87の『ビューでの利用例』を参照。フォームのバリデーション結果で処理を切り替える
             formset = TodolistForm(request.POST)
@@ -44,8 +43,6 @@ class TodoView(View):
 
         #TODOリストの削除
         if "todo_delete" in request.POST:
-
-            print(request.POST)
             
             formset = TododeleteForm(request.POST)
             if formset.is_valid():
