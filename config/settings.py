@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [ "127.0.0.1" ]
 
 # Application definition
 
-#DBを使用するアプリを読み込む
+#DBを使用するアプリを読み込む(ここに書いてないとマイグレーションは反映されない)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
